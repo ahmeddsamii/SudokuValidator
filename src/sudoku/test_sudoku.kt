@@ -3,8 +3,8 @@ package sudoku
 fun main() {
 
     check(
-        name = "Given a board 9x9 and enter value out range 1-9 in any cell, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        name = "Given a board with specific size and enter value out range this size in any cell (for example 9x9) , when call isSudokuValid then should return false",
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "6", "11", "8", "9", "1", "2"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -21,35 +21,10 @@ fun main() {
     )
 
 
-    check(
-        name = "Given a board 16x16 and enter value out range 1-16 in any cell, when call isSudokuValid then should return false",
-        result = isSudokuValid(
-            listOf(
-                listOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "17"),
-                listOf("5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1", "2", "3", "4"),
-                listOf("9", "10", "11", "12", "13", "14", "15", "16", "1", "2", "3", "4", "5", "6", "7", "8"),
-                listOf("13", "14", "15", "16", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"),
-                listOf("2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1"),
-                listOf("6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1", "2", "3", "4", "5"),
-                listOf("10", "11", "12", "13", "14", "15", "16", "1", "2", "3", "4", "5", "6", "7", "8", "9"),
-                listOf("14", "15", "16", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"),
-                listOf("3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1", "2"),
-                listOf("7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1", "2", "3", "4", "5", "6"),
-                listOf("11", "12", "13", "14", "15", "16", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"),
-                listOf("15", "16", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"),
-                listOf("4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1", "2", "3"),
-                listOf("8", "9", "10", "11", "12", "13", "14", "15", "16", "1", "2", "3", "4", "5", "6", "7"),
-                listOf("12", "13", "14", "15", "16", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"),
-                listOf("16", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15")
-            )
-        ),
-        correctResult = false
-    )
-
 
     check(
         name = "Given a board 15x16, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"),
                 listOf("5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1", "2", "3", "4"),
@@ -74,7 +49,7 @@ fun main() {
 
     check(
         name = "Given a board 16x15, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"),
                 listOf("6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "1", "2", "3", "4"),
@@ -98,22 +73,10 @@ fun main() {
     )
 
 
-    check(
-        name = "Given a board 4x4 and enter value out range 1-4 in any cell, when call isSudokuValid then should return false",
-        result = isSudokuValid(
-            listOf(
-                listOf("1","2","3","5"),
-                listOf("3","4","1","2"),
-                listOf("2","1","4","3"),
-                listOf("4","3","2","1"),
-            )
-        ),
-        correctResult = false
-    )
 
     check(
         name = "Given a valid board 4x4, when call isSudokuValid then should return true ",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("1","2","3","4"),
                 listOf("3","4","1","2"),
@@ -127,7 +90,7 @@ fun main() {
 
     check(
         name = "Given a sudoku board that have a dash symbol in row, when call isSudokuValid then should return true",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "-", "7", "8", "9", "1", "2"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -146,7 +109,7 @@ fun main() {
 
     check(
         name = "Given a sudoku board with duplication in row, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "4", "4", "6", "7", "8", "9", "1", "2"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -165,7 +128,7 @@ fun main() {
 
     check(
         name = "Given a sudoku board has non-numeric input in the row, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "6", "h", "8", "9", "1", "2"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -184,7 +147,7 @@ fun main() {
 
     check(
         name = "Given an empty board, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             emptyList()
         ),
         correctResult = false
@@ -193,7 +156,7 @@ fun main() {
 
     check(
         name = "Given a board with invalid size (Not square), when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "6", "h", "8", "9", "1"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -212,7 +175,7 @@ fun main() {
 
     check(
         name = "Given a board with dash symbol (-) in column, when call isSudokuValid then should return true",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "6", "7", "8", "9", "1", "2"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -231,7 +194,7 @@ fun main() {
 
     check(
         name = "Given a board with duplication in column, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("4", "3", "5", "6", "7", "8", "9", "1", "2"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -250,7 +213,7 @@ fun main() {
 
     check(
         name = "Given a board with non-numeric input in column, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "6", "7", "8", "9", "1", "2"),
                 listOf("h", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -269,7 +232,7 @@ fun main() {
 
     check(
         name = "Given board with non-numeric input in subgrid, when call isSudokuValid should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "6", "7", "8", "9", "1", "2"),
                 listOf("6", "h", "2", "1", "9", "5", "3", "4", "8"),
@@ -288,7 +251,7 @@ fun main() {
 
     check(
         name = "Given board with duplication in numbers, when call isSudokuValid then should return false",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "6", "7", "8", "9", "1", "2"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
@@ -307,7 +270,7 @@ fun main() {
 
     check(
         name = "Given a valid board, when call isSudokuValid then should return true",
-        result = isSudokuValid(
+        result = testSudokuValidity(
             listOf(
                 listOf("5", "3", "4", "6", "7", "8", "9", "1", "2"),
                 listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),

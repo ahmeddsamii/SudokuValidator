@@ -7,7 +7,7 @@ fun main() {
 
 }
 
-fun isSudokuValid(input: List<List<String>>): Boolean {
+fun testSudokuValidity(input: List<List<String>>): Boolean {
     // return if input is empty
     if (input.isEmpty()) return false
 
