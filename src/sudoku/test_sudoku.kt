@@ -2,6 +2,7 @@ package sudoku
 
 fun main() {
 
+    //region Board Size Validation Tests
     check(
         name = "Given a board with specific size and enter value out range this size in any cell (for example 9x9) , when call isSudokuValid then should return false",
         result = testSudokuValidity(
@@ -89,6 +90,36 @@ fun main() {
 
 
     check(
+        name = "Given an empty board, when call isSudokuValid then should return false",
+        result = testSudokuValidity(
+            emptyList()
+        ),
+        correctResult = false
+    )
+
+
+    check(
+        name = "Given a board with invalid size (Not square), when call isSudokuValid then should return false",
+        result = testSudokuValidity(
+            listOf(
+                listOf("5", "3", "4", "6", "h", "8", "9", "1"),
+                listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
+                listOf("1", "9", "8", "3", "4", "2", "5", "6", "7"),
+                listOf("8", "5", "9", "7", "6", "1", "4", "2", "3"),
+                listOf("4", "2", "6", "8", "5", "3", "7", "9", "1"),
+                listOf("7", "1", "3", "9", "2", "4", "8", "5", "6"),
+                listOf("9", "6", "1", "5", "3", "7", "2", "8", "4"),
+                listOf("2", "8", "7", "4", "1", "9", "6", "3", "5"),
+                listOf("3", "4", "5", "2", "8", "6", "1", "7", "9")
+            )
+        ),
+        correctResult = false
+    )
+    //endregion
+
+
+    //region Row Validation Tests
+    check(
         name = "Given a sudoku board that have a dash symbol in row, when call isSudokuValid then should return true",
         result = testSudokuValidity(
             listOf(
@@ -143,36 +174,10 @@ fun main() {
         ),
         correctResult = false
     )
+    //endregion
 
 
-    check(
-        name = "Given an empty board, when call isSudokuValid then should return false",
-        result = testSudokuValidity(
-            emptyList()
-        ),
-        correctResult = false
-    )
-
-
-    check(
-        name = "Given a board with invalid size (Not square), when call isSudokuValid then should return false",
-        result = testSudokuValidity(
-            listOf(
-                listOf("5", "3", "4", "6", "h", "8", "9", "1"),
-                listOf("6", "7", "2", "1", "9", "5", "3", "4", "8"),
-                listOf("1", "9", "8", "3", "4", "2", "5", "6", "7"),
-                listOf("8", "5", "9", "7", "6", "1", "4", "2", "3"),
-                listOf("4", "2", "6", "8", "5", "3", "7", "9", "1"),
-                listOf("7", "1", "3", "9", "2", "4", "8", "5", "6"),
-                listOf("9", "6", "1", "5", "3", "7", "2", "8", "4"),
-                listOf("2", "8", "7", "4", "1", "9", "6", "3", "5"),
-                listOf("3", "4", "5", "2", "8", "6", "1", "7", "9")
-            )
-        ),
-        correctResult = false
-    )
-
-
+    //region Column Validation Tests
     check(
         name = "Given a board with dash symbol (-) in column, when call isSudokuValid then should return true",
         result = testSudokuValidity(
@@ -228,8 +233,10 @@ fun main() {
         ),
         correctResult = false
     )
+    //endregion
 
 
+    //region Subgrid Validation Tests
     check(
         name = "Given board with non-numeric input in subgrid, when call isSudokuValid should return false",
         result = testSudokuValidity(
@@ -266,8 +273,10 @@ fun main() {
         ),
         correctResult = false
     )
+    //endregion
 
 
+    //region Valid Board Tests
     check(
         name = "Given a valid board, when call isSudokuValid then should return true",
         result = testSudokuValidity(
@@ -285,7 +294,7 @@ fun main() {
         ),
         correctResult = true
     )
-
+    //endregion
 }
 
 
